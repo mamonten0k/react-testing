@@ -1,3 +1,4 @@
+const { assert } = require('chai');
 const { withBrowser, pages_registry } = require('./common.helpers');
 
 describe('<Общие требования>', async function () {
@@ -17,7 +18,7 @@ describe('<Общие требования>', async function () {
 
         await withMobile(async () => {
             await navigateToPage(pages_registry.HOME_PAGE, '.Home');
-            await this.browser.assertView('mobile', 'div.container:nth-child(1)');
+            await this.browser.assertView('mobile', '#root');
         })();
     })
 
@@ -29,7 +30,7 @@ describe('<Общие требования>', async function () {
             await navigateToPage(pages_registry.HOME_PAGE, '.Home');
             const button = await this.browser.$(".Application-Toggler");
             await button.click();
-            await this.browser.assertView('mobile', 'div.container:nth-child(1)');
+            await this.browser.assertView('mobile', '#root');
         })();
     })
 
@@ -42,7 +43,7 @@ describe('<Общие требования>', async function () {
             const button = await this.browser.$(".Application-Toggler");
             await button.click();
             await button.click();
-            await this.browser.assertView('mobile', 'div.container:nth-child(1)');
+            await this.browser.assertView('mobile', '#root');
         })();
     })
 
@@ -67,7 +68,7 @@ describe('Страницы', async function () {
         const { navigateToPage } = withBrowser(browser);
 
         await navigateToPage(pages_registry.DELIVERY_PAGE, '.Delivery');
-        await browser.assertView('plain', '#root', {})
+        await browser.assertView('plain', '#root', {});
     });
 
     it('Страница Доставки адаптивная', async function () {
@@ -133,12 +134,14 @@ describe("<Корзина>", async function() {
         const { addToCart, navigateToPage } = withBrowser(browser);
         
         await addToCart();
-        await navigateToPage(pages_registry.CART_PAGE, '.Cart');
-        await navigateToPage(pages_registry.CART_PAGE, '.Cart');
 
-        await browser.assertView('plain', '#root', {
-            compositeImage: true,
-        });
+        await navigateToPage(pages_registry.CART_PAGE, '.Cart');
+        const oldCart = await browser.$('.Cart-Name').getText();
+
+        await navigateToPage(pages_registry.CART_PAGE, '.Cart');
+        const newCart = await browser.$('.Cart-Name').getText();
+
+        assert.equal(oldCart, newCart);
     });
 
     it("Все товары удаляются при нажатии кнопки <Clear shopping cart>", async function() {
@@ -180,5 +183,3 @@ describe('<Каталог>', async function () {
         });
     });
 })
-
-
