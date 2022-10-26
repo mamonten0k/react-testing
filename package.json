@@ -4,6 +4,7 @@
     "scripts": {
         "start": "nodemon ./src/server/index.ts",
         "test": "jest",
+        "hermione": "./node_modules/.bin/hermione gui ./test/hermione/example.hermione.js \\ --retry 2",
         "build": "webpack --mode=production --node-env=production",
         "watch": "webpack --watch"
     },
@@ -23,7 +24,8 @@
         "react-router-dom": "^5.3.0",
         "redux": "^4.1.1",
         "redux-observable": "^2.0.0",
-        "rxjs": "^7.4.0"
+        "rxjs": "^7.4.0",
+        "ts-node-dev": "^2.0.0"
     },
     "devDependencies": {
         "@babel/preset-env": "^7.15.8",
@@ -44,6 +46,8 @@
         "@types/webpack": "^5.28.0",
         "babel-jest": "^27.3.1",
         "css-loader": "^6.3.0",
+        "hermione": "^5.3.1",
+        "html-reporter": "^9.3.1",
         "html-webpack-plugin": "^5.3.2",
         "jest": "^27.3.0",
         "mini-css-extract-plugin": "^2.4.2",
@@ -53,7 +57,7 @@
         "style-loader": "^3.3.0",
         "ts-jest": "^27.0.7",
         "ts-loader": "^9.2.6",
-        "ts-node": "^10.3.0",
+        "ts-node": "^10.9.1",
         "typescript": "^4.4.4",
         "webpack": "^5.58.2",
         "webpack-cli": "^4.9.0"
