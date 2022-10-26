@@ -17,7 +17,6 @@ describe('<Общие требования>', async function () {
 
         await withMobile(async () => {
             await navigateToPage(pages_registry.HOME_PAGE, '.Home');
-            const button = await this.browser.$(".Application-Toggler");
             await this.browser.assertView('mobile', 'div.container:nth-child(1)');
         })();
     })
