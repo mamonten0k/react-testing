@@ -13,7 +13,7 @@ describe("<Catalog>", () => {
     expect(elementsLength).toEqual(products.length);
   });
 
-  it("Для каждого товара в каталоге отображается его название, цена и кнопка <Add To Cart>", async () => {
+  it("Для каждого товара в каталоге отображается его название, цена и кнопка <Details>", async () => {
     const { queryByText, getAllByTestId } = render("/catalog");
 
     await waitForElementToBeRemoved(() => queryByText(/loading/i));
@@ -27,8 +27,6 @@ describe("<Catalog>", () => {
       expect(link).toHaveAttribute("href", `/catalog/${products[index].id}`);
     }
   });
-
-  // если товар уже добавлен в корзину, в каталоге и на странице товара должно отображаться сообщение об этом unit-test
 
   it("По умолчанию присвоен роут /catalog", () => {
     const { container } = renderRoute("/catalog");

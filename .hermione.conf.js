@@ -4,7 +4,7 @@ module.exports = {
 
     browsers: {
         chrome: {
-            desiredCapabilities: {
+            desiredCapabilities: {  
                 browserName: 'chrome'
             }
         },
@@ -12,6 +12,7 @@ module.exports = {
     plugins: {
         'html-reporter/hermione': {
             path: 'hermione-html-report'
-        }
+        },
+        'hermione-standalone-runner-ver-r2d2': true,
     },
-}
+} 

@@ -4,7 +4,7 @@
     "scripts": {
         "start": "nodemon ./src/server/index.ts",
         "test": "jest",
-        "hermione": "./node_modules/.bin/hermione gui ./test/hermione/example.hermione.js \\ --retry 2",
+        "hermione": "./node_modules/.bin/hermione gui ./test/hermione/tests.hermione.js \\ --retry 2",
         "build": "webpack --mode=production --node-env=production",
         "watch": "webpack --watch"
     },
@@ -47,6 +47,7 @@
         "babel-jest": "^27.3.1",
         "css-loader": "^6.3.0",
         "hermione": "^5.3.1",
+        "hermione-standalone-runner-ver-r2d2": "^1.0.1",
         "html-reporter": "^9.3.1",
         "html-webpack-plugin": "^5.3.2",
         "jest": "^27.3.0",

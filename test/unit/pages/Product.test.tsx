@@ -16,3 +16,4 @@ describe("<Product>", () => {
     getByText(/item in cart/i);
   });
 });
+
